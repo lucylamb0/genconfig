@@ -284,7 +284,10 @@ class Config:
                 + self.root.gen_c_struct())
 
     def __dict__(self):
-        return self.root.__dict__()
+        d = {}
+        for c in self.root.children:
+            d.update(c.__dict__())
+        return d
 
 def main():
     ap = argparse.ArgumentParser()
